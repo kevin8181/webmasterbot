@@ -1,0 +1,21 @@
+{
+	"name": "webmasterbot",
+	"main": "dist/bot.js",
+	"source": "src/bot.ts",
+	"scripts": {
+		"start": "node .",
+		"dev": "tsc && node .",
+		"build": "tsc"
+	},
+	"type": "module",
+	"dependencies": {
+		"@sapphire/framework": "^5.2.1",
+		"discord.js": "^14.16.1",
+		"envalid": "^8.0.0"
+	},
+	"devDependencies": {
+		"@types/node": "^22.5.4",
+		"dotenv": "^16.4.5",
+		"typescript": "^5.6.2"
+	}
+}
