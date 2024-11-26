@@ -5,7 +5,7 @@ import {
 } from "@sapphire/framework";
 import { ActivityType, GatewayIntentBits } from "discord.js";
 
-import env from "./env.js";
+import env from "./util/env.js";
 
 //delete all existing commands and repopulate each time the bot starts
 //https://sapphirejs.dev/docs/Guide/commands/application-commands/application-command-registry/advanced/setting-global-behavior-when-not-identical
