@@ -14,7 +14,10 @@ export class OaAccessCommand extends Command {
 				.setName("admonition")
 				.setDescription("Give the admonition to get access to the OA channel.")
 				.addStringOption((option) =>
-					option.setName("admonition").setRequired(true)
+					option
+						.setName("admonition")
+						.setRequired(true)
+						.setDescription("The OA admonition.")
 				);
 		});
 	}
