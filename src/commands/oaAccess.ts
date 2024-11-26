@@ -1,6 +1,6 @@
 import { Command } from "@sapphire/framework";
-import env from "../util/env";
-import { ROLE_OA_ACCESS, GUILD } from "../util/discordObjects";
+import env from "../util/env.js";
+import { ROLE_OA_ACCESS, GUILD } from "../util/discordObjects.js";
 
 export class OaAccessCommand extends Command {
 	public constructor(context: Command.LoaderContext, options: Command.Options) {
