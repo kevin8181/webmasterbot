@@ -1,6 +1,7 @@
 import { Command } from "@sapphire/framework";
-import { env } from "../util/env.js";
-import { ROLE_OA_ACCESS, GUILD } from "../util/discordObjects.js";
+import { MessageFlags } from "discord.js";
+import { env } from "#env";
+import { ROLE_OA_ACCESS, GUILD } from "#util/discordObjects";
 
 export class OaAccessCommand extends Command {
 	public constructor(context: Command.LoaderContext, options: Command.Options) {
@@ -32,7 +33,7 @@ export class OaAccessCommand extends Command {
 		if (input !== env.OA_ADMONITION) {
 			return interaction.reply({
 				content: "That is not the admonition.",
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			});
 		}
 
@@ -47,7 +48,7 @@ export class OaAccessCommand extends Command {
 
 		return interaction.reply({
 			content: "You have been given OA access.",
-			ephemeral: true,
+			flags: MessageFlags.Ephemeral,
 		});
 	}
 }

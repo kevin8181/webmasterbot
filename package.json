@@ -2,20 +2,36 @@
 	"name": "webmasterbot",
 	"main": "dist/bot.js",
 	"source": "src/bot.ts",
+	"repository": "https://github.com/kevin8181/webmasterbot",
+	"packageManager": "pnpm@10.24.0",
+	"license": "AGPL-3.0-only",
 	"scripts": {
+		"build": "rm -rf dist && tsc",
+		"watch": "tsc --watch --preserveWatchOutput",
 		"start": "node .",
-		"dev": "tsc && node .",
-		"build": "tsc"
+		"dev": "pnpm build && concurrently -k -n tsc,bot -c blue,green \"npm:watch\" \"npm:start\"",
+		"check": "pnpm format && pnpm types && pnpm knip",
+		"types": "tsc --noEmit",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"knip": "knip --treat-config-hints-as-errors"
 	},
-	"type": "module",
 	"dependencies": {
-		"@sapphire/framework": "^5.2.1",
-		"discord.js": "^14.16.1",
+		"@sapphire/framework": "^5.5.1",
+		"@sapphire/plugin-hmr": "^3.0.2",
+		"discord.js": "^14.27.0",
 		"zod": "^4.6.7"
 	},
 	"devDependencies": {
-		"@types/node": "^22.5.4",
-		"dotenv": "^16.4.5",
-		"typescript": "^5.6.2"
+		"@types/node": "^26.6.5",
+		"concurrently": "^10.0.6",
+		"dotenv": "^18.0.9",
+		"knip": "^6.43.0",
+		"prettier": "^3.9.10",
+		"typescript": "^7.0.2"
+	},
+	"type": "module",
+	"imports": {
+		"#*": "./dist/*.js"
 	}
 }

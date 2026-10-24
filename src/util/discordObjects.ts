@@ -1,6 +1,6 @@
-import { env } from "./env.js";
+import { env } from "#env";
 import { container } from "@sapphire/framework";
-import { Role } from "discord.js";
+import type { Role } from "discord.js";
 
 export const GUILD = async () =>
 	await container.client.guilds.fetch(env.GUILD_ID);
