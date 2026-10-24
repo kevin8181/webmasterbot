@@ -11,6 +11,10 @@ const envSchema = z.object({
 
 	ROLE_OA_ACCESS_ID: z.string().min(1),
 	OA_ADMONITION: z.string().min(1),
+
+	ROLE_YOUTH_ID: z.string().min(1),
+	ROLE_ADULT_ID: z.string().min(1),
+	CHANNEL_LOGS_ID: z.string().min(1),
 });
 
 export const env = envSchema.parse(process.env);
