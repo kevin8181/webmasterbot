@@ -24,8 +24,7 @@ More and more units and Scouting communities run a Discord server. Webmaster tak
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **No one-on-one contact** | Watches voice channels for exactly one adult and one youth alone together. It warns them in the channel's chat and in the leaders' log channel. If nobody else joins and neither of them leaves within 30 seconds, it disconnects both and logs it. |
 | **OA channel access**     | `/admonition` grants an OA access role to anyone who enters the correct admonition. The reply is only visible to the person who ran it.                                                                                                             |
-
-More utilities, such as quick requirements lookups, are planned.
+| **Scouting411 lookup**    | `/lookup` searches [Scouting411](https://scouting411.org) as you type. Pick a rank, merit badge, adventure, award, or resource and it posts a card linking to it.                                                                                   |
 
 ## 🛠️ Running your own
 
