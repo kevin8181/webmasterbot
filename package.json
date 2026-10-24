@@ -1,8 +1,8 @@
 {
-	"name": "webmasterbot",
+	"name": "webmaster-discord",
 	"main": "dist/bot.js",
 	"source": "src/bot.ts",
-	"repository": "https://github.com/kevin8181/webmasterbot",
+	"repository": "https://github.com/scouting-commons/webmaster-discord",
 	"packageManager": "pnpm@10.24.0",
 	"license": "AGPL-3.0-only",
 	"scripts": {

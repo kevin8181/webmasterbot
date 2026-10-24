@@ -4,10 +4,10 @@
 
 **Scouting utilities for Discord.**
 
-[![CI](https://github.com/scouting-commons/webmasterbot/actions/workflows/ci.yml/badge.svg)](https://github.com/scouting-commons/webmasterbot/actions/workflows/ci.yml)
+[![CI](https://github.com/scouting-commons/webmaster-discord/actions/workflows/ci.yml/badge.svg)](https://github.com/scouting-commons/webmaster-discord/actions/workflows/ci.yml)
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
 
-[Report an issue](https://github.com/scouting-commons/webmasterbot/issues)
+[Report an issue](https://github.com/scouting-commons/webmaster-discord/issues)
 
 </div>
 
@@ -86,7 +86,7 @@ CI checks formatting, type-checks, builds, and runs Knip on every push and pull 
 
 ## 🤝 Contributing
 
-Bug reports, feature ideas, and pull requests are all welcome on the [issue tracker](https://github.com/scouting-commons/webmasterbot/issues). To report a security issue, see [SECURITY.md](https://github.com/scouting-commons/.github/blob/main/SECURITY.md). Our [code of conduct](https://github.com/scouting-commons/.github/blob/main/CODE_OF_CONDUCT.md) is short: follow the Scout Oath and Scout Law.
+Bug reports, feature ideas, and pull requests are all welcome on the [issue tracker](https://github.com/scouting-commons/webmaster-discord/issues). To report a security issue, see [SECURITY.md](https://github.com/scouting-commons/.github/blob/main/SECURITY.md). Our [code of conduct](https://github.com/scouting-commons/.github/blob/main/CODE_OF_CONDUCT.md) is short: follow the Scout Oath and Scout Law.
 
 ---
 
