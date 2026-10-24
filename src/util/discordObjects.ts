@@ -1,4 +1,4 @@
-import env from "./env.js";
+import { env } from "./env.js";
 import { container } from "@sapphire/framework";
 import { Role } from "discord.js";
 

@@ -1,5 +1,5 @@
 import { Command } from "@sapphire/framework";
-import env from "../util/env.js";
+import { env } from "../util/env.js";
 import { ROLE_OA_ACCESS, GUILD } from "../util/discordObjects.js";
 
 export class OaAccessCommand extends Command {
@@ -17,13 +17,13 @@ export class OaAccessCommand extends Command {
 					option
 						.setName("admonition")
 						.setRequired(true)
-						.setDescription("The OA admonition.")
+						.setDescription("The OA admonition."),
 				);
 		});
 	}
 
 	public override async chatInputRun(
-		interaction: Command.ChatInputCommandInteraction
+		interaction: Command.ChatInputCommandInteraction,
 	) {
 		const input = interaction.options
 			.getString("admonition", true)

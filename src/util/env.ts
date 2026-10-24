@@ -1,14 +1,14 @@
-
 import dotenv from "dotenv";
 dotenv.config();
 
-import { cleanEnv, str } from "envalid";
+import { z } from "zod";
 
-const env = cleanEnv(process.env, {
-	TOKEN: str(),
-	GUILD_ID: str(),
+const envSchema = z.object({
+	TOKEN: z.string().min(1),
+	GUILD_ID: z.string().min(1),
 
-	ROLE_OA_ACCESS_ID: str(),
-	OA_ADMONITION: str(),
+	ROLE_OA_ACCESS_ID: z.string().min(1),
+	OA_ADMONITION: z.string().min(1),
 });
-export default env;
+
+export const env = envSchema.parse(process.env);
