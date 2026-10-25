@@ -5,7 +5,7 @@ import {
 } from "@sapphire/framework";
 import "@sapphire/plugin-hmr/register";
 
-import { ActivityType, GatewayIntentBits } from "discord.js";
+import { ActivityType, Events, GatewayIntentBits } from "discord.js";
 
 import { env } from "#env";
 
@@ -14,10 +14,6 @@ import { env } from "#env";
 ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(
 	RegisterBehavior.BulkOverwrite,
 );
-
-//only register commands in the home guild
-//https://sapphirejs.dev/docs/Guide/commands/application-commands/application-command-registry/globally-configuring-guildids
-ApplicationCommandRegistries.setDefaultGuildIds([env.GUILD_ID]);
 
 const client = new SapphireClient({
 	intents: [
@@ -43,6 +39,15 @@ const client = new SapphireClient({
 	hmr: {
 		enabled: process.env["NODE_ENV"] !== "production",
 	},
+});
+
+//todo this can be removed, just has to run once
+//all commands are global, so clear any guild-scoped ones left over from older versions.
+//sapphire's bulk overwrite only touches guilds it has guild commands for
+client.once(Events.ClientReady, async (readyClient) => {
+	await Promise.all(
+		readyClient.guilds.cache.map((guild) => guild.commands.set([])),
+	);
 });
 
 await client.login(env.TOKEN);

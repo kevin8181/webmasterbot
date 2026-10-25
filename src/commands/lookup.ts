@@ -1,5 +1,10 @@
 import { Command } from "@sapphire/framework";
-import { EmbedBuilder, MessageFlags } from "discord.js";
+import {
+	ApplicationIntegrationType,
+	EmbedBuilder,
+	InteractionContextType,
+	MessageFlags,
+} from "discord.js";
 import {
 	listItems,
 	search,
@@ -36,6 +41,15 @@ export class LookupCommand extends Command {
 		registry.registerChatInputCommand((builder) => {
 			builder
 				.setName("lookup")
+				.setIntegrationTypes(
+					ApplicationIntegrationType.GuildInstall,
+					ApplicationIntegrationType.UserInstall,
+				)
+				.setContexts(
+					InteractionContextType.Guild,
+					InteractionContextType.BotDM,
+					InteractionContextType.PrivateChannel,
+				)
 				.setDescription(
 					"Look up a rank, merit badge, adventure, award, or resource on Scouting411.",
 				)

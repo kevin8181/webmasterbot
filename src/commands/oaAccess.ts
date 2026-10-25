@@ -1,5 +1,9 @@
 import { Command } from "@sapphire/framework";
-import { MessageFlags } from "discord.js";
+import {
+	ApplicationIntegrationType,
+	InteractionContextType,
+	MessageFlags,
+} from "discord.js";
 import { env } from "#env";
 import { ROLE_OA_ACCESS, GUILD } from "#util/discordObjects";
 
@@ -14,6 +18,8 @@ export class OaAccessCommand extends Command {
 			builder
 				.setName("admonition")
 				.setDescription("Give the admonition to get access to the OA channel.")
+				.setIntegrationTypes(ApplicationIntegrationType.GuildInstall)
+				.setContexts(InteractionContextType.Guild)
 				.addStringOption((option) =>
 					option
 						.setName("admonition")
