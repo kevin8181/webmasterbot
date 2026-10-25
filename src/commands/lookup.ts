@@ -1,9 +1,15 @@
 import { Command } from "@sapphire/framework";
 import {
+	ActionRowBuilder,
 	ApplicationIntegrationType,
-	EmbedBuilder,
+	ButtonBuilder,
+	ButtonStyle,
+	ContainerBuilder,
 	InteractionContextType,
 	MessageFlags,
+	resolveColor,
+	SectionBuilder,
+	TextDisplayBuilder,
 } from "discord.js";
 import {
 	listItems,
@@ -97,21 +103,46 @@ export class LookupCommand extends Command {
 			});
 		}
 
-		return interaction.reply({ embeds: [renderItem(item)] });
+		return interaction.reply({
+			components: [renderItem(item)],
+			flags: MessageFlags.IsComponentsV2,
+		});
 	}
 }
 
 function renderItem(item: SearchItem) {
 	const url = item.external ? item.url : `${SCOUTING411_URL}${item.url}`;
 
-	const embed = new EmbedBuilder()
-		.setTitle(item.name)
-		.setURL(url)
-		.setFooter({ text: `${TYPE_LABELS[item.type]} · Scouting411` });
+	const text = [
+		`### [${item.name}](${url})`,
+		item.description,
+		`-# ${TYPE_LABELS[item.type]} · Scouting411`,
+	]
+		.filter(Boolean)
+		.join("\n");
+	const textDisplay = new TextDisplayBuilder().setContent(text);
 
-	if (item.description) embed.setDescription(item.description);
-	if (item.image) embed.setThumbnail(item.image);
-	if (item.color) embed.setColor(item.color);
+	const container = new ContainerBuilder();
+	if (item.color) container.setAccentColor(resolveColor(item.color));
 
-	return embed;
+	// a section needs an accessory, so items without an image get plain text
+	const { image } = item;
+	if (image) {
+		container.addSectionComponents(
+			new SectionBuilder()
+				.addTextDisplayComponents(textDisplay)
+				.setThumbnailAccessory((thumbnail) => thumbnail.setURL(image)),
+		);
+	} else {
+		container.addTextDisplayComponents(textDisplay);
+	}
+
+	return container.addActionRowComponents(
+		new ActionRowBuilder<ButtonBuilder>().addComponents(
+			new ButtonBuilder()
+				.setStyle(ButtonStyle.Link)
+				.setLabel("Open")
+				.setURL(url),
+		),
+	);
 }
